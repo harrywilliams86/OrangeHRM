@@ -16,8 +16,8 @@ public class ExcelUtils
 	Workbook wb;
 	public ExcelUtils() throws Exception
 	{
-		FileInputStream fin = new FileInputStream(".TestInput/InputSheet.xlsx");
-		wb = WorkbookFactory.create(fin);
+		FileInputStream fis = new FileInputStream("./TestInput/InputSheet.xlsx");
+		wb = WorkbookFactory.create(fis);
 	}
 	
 	public int getRowCount(String sheetname)
@@ -45,54 +45,44 @@ public class ExcelUtils
 		return data;
 	}
 	
-	public void setCellData(String sheetname, int rownum, int col, String data) throws Exception
-	{
-		if(data.equalsIgnoreCase("PASS"))
-		{
-		Sheet sheet = wb.getSheet(sheetname);
-		Row row = sheet.getRow(rownum);
-		Cell cell = row.createCell(col);
-		CellStyle style = wb.createCellStyle();
-		Font font = wb.createFont();
-		font.setColor(IndexedColors.GREEN.getIndex());
-		font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-		style.setFont(font);
-		cell.setCellStyle(style);
-		cell.setCellValue(data);
-		}
-		else 
-			if(data.equalsIgnoreCase("FAIL"))
-			{
-			Sheet sheet = wb.getSheet(sheetname);
-			Row row = sheet.getRow(rownum);
-			Cell cell = row.createCell(col);
-			CellStyle style = wb.createCellStyle();
-			Font font = wb.createFont();
-			font.setColor(IndexedColors.RED.getIndex());
-			font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-			style.setFont(font);
-			cell.setCellStyle(style);
-			cell.setCellValue(data);
-			}
-			else 
-				if(data.equalsIgnoreCase("NOT EXECUTED"))
-				{
-				Sheet sheet = wb.getSheet(sheetname);
-				Row row = sheet.getRow(rownum);
-				Cell cell = row.createCell(col);
-				CellStyle style = wb.createCellStyle();
-				Font font = wb.createFont();
-				font.setColor(IndexedColors.BLUE.getIndex());
-				font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-				style.setFont(font);
-				cell.setCellStyle(style);
-				cell.setCellValue(data);
-				}
-		FileOutputStream fout = new FileOutputStream("./TestOutput/OutputSheet.xlsx");
-		wb.write(fout);
-		wb.close();
-		fout.close();
+	 public void setData(String sheetname, int row, int column, String data) throws Exception 
+	   {
+		  Sheet sh =wb.getSheet(sheetname);
+		  Row rownum = sh.getRow(row);
+		  Cell cell =rownum.createCell(column);
+		  cell.setCellValue(data);
+		  if(data.equalsIgnoreCase("PASS"))
+		  {
+			  CellStyle style =wb.createCellStyle();
+			  Font font =wb.createFont();
+			  font.setColor(IndexedColors.GREEN.getIndex());
+			  font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+			  style.setFont(font);
+			  rownum.getCell(column).setCellStyle(style);
+		  }
+		  else
+			  if(data.equalsIgnoreCase("Fail"))
+			  {
+				  CellStyle style =wb.createCellStyle();
+				  Font font =wb.createFont();
+				  font.setColor(IndexedColors.RED.getIndex());
+				  font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+				  style.setFont(font);
+				  rownum.getCell(column).setCellStyle(style);
+				 }
+			  else
+				  if(data.equalsIgnoreCase("Not Executed"))
+				  {
+					  CellStyle style =wb.createCellStyle();
+					  Font font =wb.createFont();
+					  font.setColor(IndexedColors.BLUE.getIndex());
+					  font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+					  style.setFont(font);
+					  rownum.getCell(column).setCellStyle(style);
+					 }
+		        FileOutputStream fos= new FileOutputStream("./TestOutput/OutputSheet.xlsx");
+		        wb.write(fos);
+		        fos.close();
+		   }
 	}
-	
-	
-}
+		

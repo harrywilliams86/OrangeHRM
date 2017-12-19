@@ -1,5 +1,7 @@
 package com.orangehrm.commonfunctionality;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +18,6 @@ public class CommonFunctions
 	{
 		if(PropertiesUtil.getValueForKey("Browser").equalsIgnoreCase("Chrome"))
 		{
-			System.out.println(PropertiesUtil.getValueForKey("Browser"));
 			System.setProperty("webdriver.chrome.driver", "//Users//williamsharry//Documents//workspace//chromedriver");
 			driver = new ChromeDriver();
 		}
@@ -90,16 +91,16 @@ public class CommonFunctions
 		Assert.assertEquals(acttitle, exptitle);
 	}
 	
-	public static void clickLogout(WebDriver driver) throws InterruptedException
-	{
-		driver.findElement(By.linkText("Welcome Rasool")).click();
-		Actions act = new Actions(driver);
-		Thread.sleep(2000);
-		act.click(driver.findElement(By.xpath(".//*[@id='welcome-menu']/ul/li[3]/a"))).build().perform();
+	public static void logout(WebDriver driver)
+	{	
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.findElement(By.linkText("Welcome Admin")).click();
+		driver.findElement(By.linkText("Logout")).click();
 	}
 	public static void closeApplication(WebDriver driver)
 	{
 		driver.manage().deleteAllCookies();
 		driver.quit();
 	}
+	
 }

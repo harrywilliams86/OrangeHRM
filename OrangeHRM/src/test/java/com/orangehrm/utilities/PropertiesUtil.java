@@ -10,7 +10,7 @@ public class PropertiesUtil
 	public static String getValueForKey(String key) throws Exception, IOException
 	{
 		Properties configprop = new Properties();
-		configprop.load(new FileInputStream(new File(".PropertiesFile/Environment.properties")));
+		configprop.load(new FileInputStream(new File("./PropertiesFile/Environment.properties")));
 		return configprop.getProperty(key);
 	}
 }
