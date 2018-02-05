@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="6146" started-at="2017-09-30T14:51:27Z" finished-at="2017-09-30T14:51:33Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="6146" started-at="2017-09-30T14:51:27Z" finished-at="2017-09-30T14:51:33Z">
+      <class name="com.orangehrm.driverfactory.AppTest">
+        <test-method status="PASS" signature="kickStart()[pri:0, instance:com.orangehrm.driverfactory.AppTest@7cd62f43]" name="kickStart" duration-ms="6111" started-at="2017-09-30T20:21:27Z" finished-at="2017-09-30T20:21:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- kickStart -->
+      </class> <!-- com.orangehrm.driverfactory.AppTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

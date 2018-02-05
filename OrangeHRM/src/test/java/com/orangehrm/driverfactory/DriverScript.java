@@ -45,6 +45,10 @@ public class DriverScript
 					{
 						CommonFunctions.clickAction(driver, Locator_Type, Locator_Value);
 					}
+					if(Object_Type.equalsIgnoreCase("selectAction"))
+					{
+						CommonFunctions.selectAction(driver, Locator_Type, Locator_Value, Test_Data);
+					}
 					if(Object_Type.equalsIgnoreCase("logout"))
 					{
 						CommonFunctions.logout(driver);

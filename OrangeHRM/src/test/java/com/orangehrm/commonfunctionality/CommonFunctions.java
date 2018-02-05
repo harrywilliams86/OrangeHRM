@@ -4,9 +4,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -65,6 +67,30 @@ public class CommonFunctions
 				driver.findElement(By.xpath(locatorValue)).sendKeys(data);
 			}
 	}
+	public static void selectAction(WebDriver driver, String locatorType, String locatorValue,String data)
+	{
+		WebElement element = null;
+		if(locatorType.equalsIgnoreCase("id"))
+		{
+			 element = driver.findElement(By.id(locatorValue));
+		}
+		else
+			if(locatorType.equalsIgnoreCase("xpath"))
+			{
+				element = driver.findElement(By.xpath(locatorValue));
+			}
+		else
+			if(locatorType.equalsIgnoreCase("name"))
+			{
+				element = driver.findElement(By.name(locatorValue));
+			}
+		Select list = new Select(element);
+		list.selectByVisibleText(data);
+	}
+	
+	
+	
+	
 	public static void waitForElement(WebDriver driver, String locatorType, String locatorValue, String time)
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(time));
