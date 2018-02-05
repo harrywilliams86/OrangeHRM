@@ -20,8 +20,16 @@ public class CommonFunctions
 	{
 		if(PropertiesUtil.getValueForKey("Browser").equalsIgnoreCase("Chrome"))
 		{
+			try
+			{
 			System.setProperty("webdriver.chrome.driver", "//Users//williamsharry//Documents//workspace//chromedriver");
 			driver = new ChromeDriver();
+			}
+			catch(Exception e)
+			{
+			System.setProperty("webdriver.chrome.driver", "C://Users//Willy//Documents//Selenium Plugins//chromedriver.exe");
+			driver = new ChromeDriver();	
+			}
 		}
 		return driver;
 	}
